@@ -6,7 +6,7 @@ import api from  "../api/axios";
 export default function Navbar(){
     const navigate  = useNavigate();
     const [cartCount, setCartCount] = useState(0);
-    const userId = localStorage.getitem("userId");
+    const userId = localStorage.getItem("userId");
 
     useEffect(() => {
         const loadCart = async () => {

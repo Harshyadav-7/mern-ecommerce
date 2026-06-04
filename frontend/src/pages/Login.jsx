@@ -26,6 +26,7 @@ const handleSubmit = async(e) =>{
 
         //save token to localStorage
         localStorage.setItem("token",res.data.token);
+        localStorage.setItem("userId",res.data.user.id);
         setMsg("Login successfull");
 
         //redirect to Home page after 1 second
