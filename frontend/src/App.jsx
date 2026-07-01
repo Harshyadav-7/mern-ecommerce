@@ -7,6 +7,7 @@ import AddProduct from "./admin/AddProduct";
 import EditProduct from "./admin/EditProduct";
 import ProductList from "./admin/productList";
 import Layout from "./pages/Layout";
+import Cart from "./pages/Cart";
 
 const router = createBrowserRouter([
   {
@@ -16,10 +17,11 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
       { path: "/product/:id", element: <ProductDetails /> },
-
+      
       { path: "/admin/products", element: <ProductList /> },
       { path: "/admin/products/add", element: <AddProduct /> },
       { path: "/admin/products/edit/:id", element: <EditProduct /> },
+      { path: "/cart", element: <Cart /> },
     ]
   }
 ]);
