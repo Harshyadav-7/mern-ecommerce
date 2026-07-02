@@ -32,8 +32,8 @@ export default function CheckoutAddress(){
 
     return(
         <div className="max-w-xl mx-auto p-6">
-            ,<h1 className="text-2xl font-bold mb-4">Delivery Address</h1>{
-                object.keys(form).map((key) =>{
+            <h1 className="text-2xl font-bold mb-4">Delivery Address</h1>{
+                Object.keys(form).map((key) =>(
                     <input
                     key={key}
                     name ={key}
@@ -41,7 +41,7 @@ export default function CheckoutAddress(){
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
                     />
-                })
+                ))
             }
 
             <button

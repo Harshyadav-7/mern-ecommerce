@@ -8,6 +8,8 @@ import EditProduct from "./admin/EditProduct";
 import ProductList from "./admin/productList";
 import Layout from "./pages/Layout";
 import Cart from "./pages/Cart";
+import CheckoutAddress from "./pages/CheckoutAddress";
+import CheckOut from "./pages/CheckOut";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,8 @@ const router = createBrowserRouter([
       { path: "/admin/products/add", element: <AddProduct /> },
       { path: "/admin/products/edit/:id", element: <EditProduct /> },
       { path: "/cart", element: <Cart /> },
+      { path: "/checkout-address", element: <CheckoutAddress />},
+      { path: "/checkOut", element: <CheckOut />}
     ]
   }
 ]);
