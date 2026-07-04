@@ -38,6 +38,7 @@ export default function CheckoutAddress(){
                     key={key}
                     name ={key}
                     placeholder ={key}
+                     value={form[key]}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
                     />

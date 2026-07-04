@@ -10,6 +10,7 @@ import Layout from "./pages/Layout";
 import Cart from "./pages/Cart";
 import CheckoutAddress from "./pages/CheckoutAddress";
 import CheckOut from "./pages/CheckOut";
+import Order from "./pages/Order";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
       { path: "/admin/products/edit/:id", element: <EditProduct /> },
       { path: "/cart", element: <Cart /> },
       { path: "/checkout-address", element: <CheckoutAddress />},
-      { path: "/checkOut", element: <CheckOut />}
+      { path: "/checkOut", element: <CheckOut />},
+      { path: "/Order/:id", element: <Order />}
     ]
   }
 ]);
