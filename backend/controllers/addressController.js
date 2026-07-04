@@ -9,7 +9,7 @@ export const saveAddress = async(req,res) => {
         });
 
         if(existing){
-            res.json({message: "Address already exist", address: existing});
+           return res.json({message: "Address already exist", address: existing});
         }
         const address = await Address.create(req.body);
         res.json({

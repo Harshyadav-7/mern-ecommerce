@@ -40,6 +40,9 @@ export default function CheckOut(){
         userId,
         address: SelectAddress,
     })
+
+    window.dispatchEvent(new Event("cartUpdated")); 
+    
   navigate(`/Order/${res.data.order}`); 
   }
 

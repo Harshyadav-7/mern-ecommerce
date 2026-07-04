@@ -33,7 +33,7 @@ export default function Navbar(){
     }
 
     return (
-        <nav className="flex justify-between p-4 shadow">
+        <nav className="flex justify-between p-4 shadow bg-yellow-400">
             <Link to="/" className="font-bold text-xl">Products Hub</Link>
 
             <div className="flex gap-4 items-center">
