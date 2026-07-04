@@ -1,18 +1,18 @@
-import Order from "../models/Order";
-import Cart from "../models/Cart";
-import Product from "../models/Product.js";
+import Order from "../models/Order.js";
+import Cart from "../models/Cart.js";
+import Product from "../models/product.js";
 
 export const placeOrder = async(req, res)=>{
     try{
         const {userId, address} = req.body;
         //Get Cart
         const cart = await Cart.findOne({userId}).populate('items.productId');
-        if(!cart || cart.items.lenth === 0){
+        if(!cart || cart.items.length === 0){
             return res.status(400).json({message: "Cart is empty"});
         }
         //prepare Order items
         const orderItems = cart.items.map(item => ({
-            productId: item.product._id,
+            productId: item.productId._id,
             quantity: item.quantity,
             price: item.productId.price,
         }))
@@ -35,10 +35,10 @@ export const placeOrder = async(req, res)=>{
         })
 
         //clear Cart
-        await cart.findOneAndUpdate({userId}, {items: []});
-
+        await Cart.findOneAndUpdate({userId}, {items: []});
         res.status(201).json({message: "Order Placed Successfully", order: order._id});
     }catch(error){
+        console.log(error)
         res.status(500).json({message: "Internal server error"});
     }
 }

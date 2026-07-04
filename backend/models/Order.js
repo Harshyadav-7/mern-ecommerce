@@ -31,8 +31,10 @@ const OrderSchema = mongoose.Schema({
         default: 'COD'
     },
     status:{
+        type: String,
         default: 'placed',
-    },
+    }
+},{
     timestamps: true
 });
 
