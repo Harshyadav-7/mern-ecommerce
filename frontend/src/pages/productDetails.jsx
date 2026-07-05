@@ -30,6 +30,23 @@ export default function Productdetails(){
         return <div>Loading....</div>
     }
 
+    const addToCart = async (productId) => {
+            const userId = localStorage.getItem("userId");
+            if (!userId) {
+                alert("please log in to add products");
+                return;
+            }
+    
+            const res = await api.post(`/cart/add`, { userId, productId });
+    
+            const total = res.data.cart.items.reduce(
+                (sum, item) => sum + item.productId.price * item.quantity, 0
+            );
+            localStorage.setItem("cartCount", total)
+            window.dispatchEvent(new Event("cartUpdated"))
+        }
+    
+
     return(
         <div>
             {
@@ -45,7 +62,7 @@ export default function Productdetails(){
         <p className='text-xl font-semibold mt-4'>{product.price}</p>
 
 
-        <button className='mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-500'>
+        <button onClick={() => addToCart(product._id)} className='mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-500'>
             Add to Cart
         </button>
         </div>
