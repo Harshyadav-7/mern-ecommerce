@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { Navigate } from "react-router";
 
 export default function Home() {
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("");
+    const navigate = useNavigate();
 
 
     const loadProduct = async () => {
@@ -22,14 +24,29 @@ export default function Home() {
     }, [search, category]);
 
 
-    const addToCart =async (productId)=>{
+    const handleAskGemini = async () => {
+        try {
+            const res = await api.post("/gemini/ask", { question: search });
+            if (res.data.productId) {
+                navigate(`/product/${res.data.productId}?q=${encodeURIComponent(search)}`);
+                console.log(error)
+            } else {
+                alert("Nothing matching found");
+            }
+        } catch (error) {
+            console.log(error);
+            alert("some bug found");
+        }
+    };
+
+    const addToCart = async (productId) => {
         const userId = localStorage.getItem("userId");
-        if(!userId){
+        if (!userId) {
             alert("please log in to add products");
             return;
         }
 
-        const res = await api.post(`/cart/add`, {userId, productId});
+        const res = await api.post(`/cart/add`, { userId, productId });
 
         const total = res.data.cart.items.reduce(
             (sum, item) => sum + item.productId.price * item.quantity, 0
@@ -47,6 +64,12 @@ export default function Home() {
                     onChange={(e) => setSearch(e.target.value)}
                     className="border px-3 py-2 rounded w-1/2"
                 />
+
+                <button
+                    onClick={handleAskGemini}
+                    className="bg-zinc-600 text-white px-3 py-2 rounded cursor-pointer"
+                >
+                    Ask Gemini</button>
 
                 <select
                     value={category}

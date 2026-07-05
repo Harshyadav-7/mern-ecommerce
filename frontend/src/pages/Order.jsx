@@ -12,7 +12,7 @@ export default function Order(){
             <p>Yor order ID:
                 <span className="font-semibold">{id}</span>
             </p>
-            <button onClick={goHome} className="inline-block mt-6 bg blue-600 text-white px-6 py-2 rounded">Continue Shopping</button>
+            <button onClick={goHome} className="inline-block mt-6 bg-blue-600 text-white px-6 py-2 rounded">Continue Shopping</button>
         </div>
     )
 }
