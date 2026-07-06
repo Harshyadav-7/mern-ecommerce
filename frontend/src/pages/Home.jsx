@@ -67,14 +67,14 @@ export default function Home() {
 
                 <button
                     onClick={handleAskGemini}
-                    className="bg-zinc-600 text-white px-3 py-2 rounded cursor-pointer"
+                    className="bg-purple-600 text-white px-3 py-2 rounded cursor-pointer"
                 >
                     Ask Gemini</button>
 
                 <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="border px-3 py-2 rounded"
+                    className="border px-3 py-2 rounded bg-zinc-600 text-white"
                 >
                     <option value="">All Categories</option>
                     <option value="Laptops">Laptops</option>
