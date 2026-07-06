@@ -94,7 +94,7 @@ export default function Cart() {
                         ))}
 
                         <div className="text-right mt-4">
-                            <h2 className="text-xl font-bold">total: ${total.toFixed(2)}</h2>
+                            <h2 className="text-xl font-bold">total: ₹{total.toFixed(2)}</h2>
                         </div>
                         <button onClick={()=> navigate("/checkout-address")} className="w-full bg-blue-500 text-white p-2 rounded">
                         proceed to Checkout

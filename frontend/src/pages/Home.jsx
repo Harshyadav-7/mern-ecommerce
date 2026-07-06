@@ -29,7 +29,7 @@ export default function Home() {
             const res = await api.post("/gemini/ask", { question: search });
             if (res.data.productId) {
                 navigate(`/product/${res.data.productId}?q=${encodeURIComponent(search)}`);
-                console.log(error)
+                
             } else {
                 alert("Nothing matching found");
             }
